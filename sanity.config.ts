@@ -4,22 +4,16 @@
  * This configuration is used to for the Sanity Studio that’s mounted on the `\app\blog\[[...tool]]\page.tsx` route
  */
 
-import { visionTool } from "@sanity/vision";
-import { defineConfig, definePlugin } from "sanity";
+import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
-
-// Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, dataset, projectId } from "./sanity/env";
+import { visionTool } from "@sanity/vision";
 import { schema } from "./sanity/schemaTypes";
-import { structure } from "./sanity/structure";
 
-export default defineConfig({
-  basePath: "/admin/blog",
-  projectId,
-  dataset,
-  schema,
-  plugins: [
-    structureTool({ structure }),
-    visionTool({ defaultApiVersion: apiVersion }),
-  ],
+export const sanityConfig = defineConfig({
+  name: "pdam_probolinggo",
+  dataset: "production",
+  projectId: "v05rmwlb",
+  basePath: "/studio",
+  plugins: [structureTool(), visionTool()],
+  schema: schema,
 });

@@ -35,12 +35,15 @@ import {
 import { NavLaporan } from "./nav-laporan";
 import { NavLainnya } from "./nav-lainnya";
 import useAdminRole from "@/store/role";
+import Image from "next/image";
 
 const data = {
   teams: [
     {
-      name: "Admin Tidham",
-      logo: GalleryVerticalEnd,
+      name: "Admin PDAM Probolinggo",
+      Logo: (
+        <Image src="/pudam-bayuangga.png" alt="logo" width={50} height={50} />
+      ),
       plan: "",
     },
   ],
@@ -113,14 +116,14 @@ const data = {
     },
   ],
   lainnya: [
-    {
-      title: "Konfigurasi Tidham",
-      url: "/admin/app-configuration",
-      icon: SquareTerminal,
-    },
+    // {
+    //   title: "Konfigurasi Tidham",
+    //   url: "/admin/app-configuration",
+    //   icon: SquareTerminal,
+    // },
     {
       title: "Dashboard Blog & Informasi",
-      url: "/admin/blog",
+      url: "/studio",
       icon: SquareTerminal,
     },
   ],

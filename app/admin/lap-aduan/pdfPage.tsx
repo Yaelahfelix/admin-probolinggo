@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import { Printer } from "lucide-react";
 import clsx from "clsx";
@@ -8,6 +8,8 @@ import { id } from "date-fns/locale";
 import logo from "@/public/nlogo.svg";
 import { LapAduan } from "@/types/lap-aduan";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
+import PDFHeader, { HeaderProps } from "@/components/pdf-header";
 
 // Props type definition
 type DRDTableProps = {
@@ -20,6 +22,12 @@ type DRDTableProps = {
 // Component to be printed
 const ReportPrintComponent = React.forwardRef<HTMLDivElement, DRDTableProps>(
   ({ data = [], tanggal, filter }, ref) => {
+    const [dekstop, setDekstop] = useState<HeaderProps>();
+    useEffect(() => {
+      axios.get("/api/dekstop").then((res) => {
+        setDekstop(res.data.data);
+      });
+    }, []);
     return (
       <div
         ref={ref}
@@ -27,85 +35,11 @@ const ReportPrintComponent = React.forwardRef<HTMLDivElement, DRDTableProps>(
         style={{ backgroundColor: "#ffffff" }}
       >
         <div className="header w-full">
-          <div className="w-full ">
-            {/* <div
-              className="border-b w-full border-black"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "5px",
-                paddingBottom: "15px",
-              }}
-            >
-              <div style={{ marginRight: "10px" }}>
-                <img
-                  src="/logo/pudam-bayuangga.png"
-                  alt="Perumda Air Minum Bayuangga Logo"
-                  height={80}
-                  width={80}
-                />
-              </div>
-              <div>
-                <div
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  <p>{headerlap1}</p>
-                  <p>{headerlap2}</p>
-                </div>
-                <div
-                  style={{
-                    fontSize: "12px",
-                  }}
-                >
-                  <p>{alamat1}</p>
-                  <p>{alamat2}</p>
-                </div>
-              </div>
-            </div> */}
-            <div className="inline-block my-2 w-full border-b border-black pb-4">
-              <div className="flex ml-1 items-start justify-start my-auto gap-4">
-                <div className="flex items-start">
-                  {/* <Image
-            src={logos[0].src}
-            alt="logo"
-            width={50}
-            height={logos[0].height}
-            className='bg-none'
-          /> */}
-                  <img src={logo.src} width={75} alt="logo"></img>
-
-                  {/* <Image
-            src={myLogo}
-            alt="logo"
-            width={75}
-            height={logos[0].height}
-            className='bg-none'
-          /> */}
-                  <div className={`my-0 ml-1 p-0 `}>
-                    <p
-                      className={`text-sm tracking-wider uppercase text-teal-800 font-bold`}
-                    >
-                      Perumda air minum Tirta Dhaha
-                    </p>
-                    <p
-                      className={`text-sm tracking-wider uppercase text-teal-800 font-bold`}
-                    >
-                      Kota Kediri
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="my-1.5">
-              <h1 className="text-lg text-center uppercase">
-                Laporan Pengaduan
-              </h1>
-              <h3 className="text-base text-center capitalize">{tanggal}</h3>
-            </div>
-          </div>
+          <PDFHeader
+            judul="Laporan Pengaduan"
+            dekstop={dekstop}
+            description={tanggal}
+          />
         </div>
         <div className="footer"></div>
 
@@ -480,7 +414,7 @@ const PDFReport: React.FC<DRDTableProps> = (props) => {
       }
             
       .header, .header-space {
-        height: 150px;
+        height: 180px;
       }
       
       .footer, .footer-space {

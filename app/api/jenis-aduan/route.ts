@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
       );
     }
     const [rows] = await db.execute<RowDataPacket[]>(
-      "Insert into jenis_aduan (nama,aktif) values (?,?)",
+      "Insert into jenis_aduan (nama,is_active) values (?,?)",
       [nama, aktif]
     );
 
