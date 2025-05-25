@@ -12,7 +12,7 @@ import {
 import DataForm from "./hubungi_form";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default async function create() {
+export default function create() {
   const params = useSearchParams();
   const id = params.get("id");
   const Router = useRouter();

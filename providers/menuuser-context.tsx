@@ -376,6 +376,54 @@ const pageNames: { [key: string]: objMenu } = {
       },
     ],
   },
+
+  "/admin/document-public": {
+    title: "Dokumen Publik",
+    items: [
+      {
+        title: "Dokumen Publik",
+        url: "/admin/rekap-aduan",
+        ismenu: true,
+        id: 1,
+      },
+    ],
+  },
+
+  "/admin/homepage/statistic": {
+    title: "Homepage - Statistik",
+    items: [
+      {
+        title: "Statistik",
+        url: "/admin/rekap-aduan",
+        ismenu: true,
+        id: 1,
+      },
+    ],
+  },
+
+  "/admin/homepage/partner": {
+    title: "Homepage - Partner",
+    items: [
+      {
+        title: "Partner",
+        url: "/admin/rekap-aduan",
+        ismenu: true,
+        id: 1,
+      },
+    ],
+  },
+
+  "/admin/homepage/others": {
+    title: "Lainnya",
+    items: [
+      {
+        title: "Lainnya",
+        url: "/admin/rekap-aduan",
+        ismenu: true,
+        id: 1,
+      },
+    ],
+  },
 };
 export const MenuUserContext = createContext(pageNames);
 

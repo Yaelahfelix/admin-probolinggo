@@ -14,6 +14,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.sanity.io",
       },
+
+      {
+        protocol: "https",
+        hostname: "kj4yedrh4dxl4fr1.public.blob.vercel-storage.com",
+      },
     ],
   },
 

@@ -12,15 +12,15 @@ export async function GET(
 ) {
   try {
     const { user } = await getCurrentSession();
-    if (user === null) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Unauthorize",
-        },
-        { status: 403 }
-      );
-    }
+    // if (user === null) {
+    //   return NextResponse.json(
+    //     {
+    //       success: false,
+    //       message: "Unauthorize",
+    //     },
+    //     { status: 403 }
+    //   );
+    // }
 
     const param = await params;
     const id = param.id;
@@ -87,7 +87,7 @@ export async function GET(
         id: 1,
         judul: `DATA MASUK NOMOR : ${val.nomor}`,
         tanggal: val.tanggal,
-        deskripsi: `Data aduan masuk ke server di input oleh ${user.nama}`,
+        deskripsi: `Data aduan masuk ke server `,
       };
       tracking.push(dataMasuk);
 
@@ -150,7 +150,7 @@ export async function GET(
       status: convertStatusAduan(dataCheck[0].status_aduan),
       foto_aduan: converUrlFotoAduan(dataCheck[0].url_foto_aduan),
       url_qrcode: `${baseUrl}/pub/aduan/detail?id=${idEncrypt}`,
-      user_buat: user.nama,
+      user_buat: user?.nama,
       tracking: tracking_aduan[0],
     };
 

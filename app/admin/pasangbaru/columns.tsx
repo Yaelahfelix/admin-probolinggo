@@ -3,6 +3,8 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "@/components/datatable-header-column";
 import Actions from "./actions";
+import { format } from "date-fns";
+import { id } from "date-fns/locale";
 
 // define data
 export type WebUserDaftarPSB = {
@@ -57,12 +59,19 @@ export const columns: ColumnDef<WebUserDaftarPSB>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Dihubungi pada" />
     ),
+    cell: ({ row }) =>
+      row.original.hub_at
+        ? format(new Date(row.original.hub_at), "d MMMM yyyy HH:mm:ss", {
+            locale: id,
+          })
+        : "-",
   },
   {
     accessorKey: "hub_by",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Dihubungi oleh" />
     ),
+    cell: ({ row }) => row.original.hub_by || "-",
   },
 
   {
@@ -70,12 +79,19 @@ export const columns: ColumnDef<WebUserDaftarPSB>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Diproses pada" />
     ),
+    cell: ({ row }) =>
+      row.original.proses_at
+        ? format(new Date(row.original.proses_at), "d MMMM yyyy HH:mm:ss", {
+            locale: id,
+          })
+        : "-",
   },
   {
     accessorKey: "proses_by",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Diproses oleh" />
     ),
+    cell: ({ row }) => row.original.hub_by || "-",
   },
   {
     id: "action",

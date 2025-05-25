@@ -8,7 +8,9 @@ import {
   BookmarkCheck,
   BookOpen,
   Bot,
+  Building2,
   Command,
+  FolderCog,
   Frame,
   GalleryVerticalEnd,
   Map,
@@ -36,6 +38,7 @@ import { NavLaporan } from "./nav-laporan";
 import { NavLainnya } from "./nav-lainnya";
 import useAdminRole from "@/store/role";
 import Image from "next/image";
+import { NavWebKonfigurasi } from "./nav-webkonfigurasi";
 
 const data = {
   teams: [
@@ -80,26 +83,31 @@ const data = {
       title: "Jenis Aduan",
       url: "/admin/jenis-aduan",
       icon: AlignEndVertical,
+      role: ["super_admin", "admin"],
     },
     {
       title: "Jenis Penyelesaian",
       url: "/admin/jenis-penyelesaian",
       icon: AlignHorizontalDistributeCenter,
+      role: ["super_admin", "admin"],
     },
     {
       title: "Divisi",
       url: "/admin/divisi",
       icon: UsersRound,
+      role: ["super_admin", "admin"],
     },
     {
       title: "Petugas",
       url: "/admin/petugas",
       icon: UsersRound,
+      role: ["super_admin", "admin"],
     },
     {
       title: "Users",
       url: "/admin/users",
       icon: User,
+      role: ["super_admin", "admin"],
     },
   ],
 
@@ -108,11 +116,39 @@ const data = {
       title: "Laporan Aduan",
       url: "/admin/lap-aduan",
       icon: NotepadText,
+      role: ["super_admin", "admin", "pegawai"],
     },
     {
       title: "Rekapitulasi Aduan",
       url: "/admin/rekap-aduan",
       icon: NotebookTabs,
+      role: ["super_admin", "admin", "pegawai"],
+    },
+  ],
+  konfigurasiWeb: [
+    {
+      title: "Dokumen Publik",
+      url: "/admin/document-public",
+      icon: NotepadText,
+      role: ["super_admin", "admin"],
+    },
+    {
+      title: "Homepage - Partner",
+      url: "/admin/homepage/partner",
+      icon: Building2,
+      role: ["super_admin", "admin"],
+    },
+    {
+      title: "Homepage - Statistik",
+      url: "/admin/homepage/statistic",
+      icon: Settings2,
+      role: ["super_admin", "admin"],
+    },
+    {
+      title: "Homepage - Lainnya",
+      url: "/admin/homepage/others",
+      icon: FolderCog,
+      role: ["super_admin", "admin"],
     },
   ],
   lainnya: [
@@ -125,6 +161,7 @@ const data = {
       title: "Dashboard Blog & Informasi",
       url: "/studio",
       icon: SquareTerminal,
+      role: ["super_admin", "admin"],
     },
   ],
 };
@@ -142,9 +179,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain
           items={data.navMain.filter((item) => item.role.includes(role))}
         />
-        <NavMasterdata items={data.masterdata} />
-        <NavLaporan items={data.laporan} />
-        <NavLainnya items={data.lainnya} />
+        <NavMasterdata
+          items={data.masterdata.filter((item) => item.role.includes(role))}
+        />
+        <NavLaporan
+          items={data.laporan.filter((item) => item.role.includes(role))}
+        />
+        <NavWebKonfigurasi
+          items={data.konfigurasiWeb.filter((item) => item.role.includes(role))}
+        />
+        <NavLainnya
+          items={data.lainnya.filter((item) => item.role.includes(role))}
+        />
       </SidebarContent>
       <SidebarFooter>
         <NavUser />
