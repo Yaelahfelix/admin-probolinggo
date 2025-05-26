@@ -17,7 +17,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Alert } from "@/components/ui/alert";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { getCurrentSession } from "@/lib/session";
 
 const resetPasswordSchema = z
   .object({
