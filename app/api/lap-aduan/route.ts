@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
     let query = `
       SELECT a.id, a.tanggal, a.nomor, a.no_pelanggan, a.jenis_aduan_id, ja.nama as jenis_nama, a.nama, a.no_hp, a.alamat, a.is_complete, a.completed_at,
       a.url_foto_aduan, a.url_foto_penyelesaian
-      FROM pdamkota_loket.web_aduan a
+      FROM web_aduan a
       LEFT JOIN jenis_aduan ja ON ja.id = a.jenis_aduan_id
       WHERE tanggal >= ? AND tanggal <= ?
     `;

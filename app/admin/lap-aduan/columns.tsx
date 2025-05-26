@@ -79,6 +79,8 @@ export const columns: ColumnDef<LapAduan>[] = [
       <DataTableColumnHeader column={column} title="Tgl Penyelesaian" />
     ),
     cell: ({ row }) =>
-      format(new Date(row.original.completed_at), "dd MMM yyyy"),
+      row.original.completed_at
+        ? format(new Date(row.original.completed_at), "dd MMM yyyy")
+        : "-",
   },
 ];

@@ -32,7 +32,7 @@ const ReportPrintComponent = React.forwardRef<HTMLDivElement, DRDTableProps>(
       <div
         ref={ref}
         className="print-container"
-        style={{ backgroundColor: "#ffffff" }}
+        // style={{ backgroundColor: "#ffffff" }}
       >
         <div className="header w-full">
           <PDFHeader
@@ -326,7 +326,7 @@ const PDFReport: React.FC<DRDTableProps> = (props) => {
           Cetak
         </Button>
       </div>
-      <div ref={componentRef} className="border-t mt-5">
+      <div ref={componentRef} className="mt-5 ">
         <ReportPrintComponent {...props} />
       </div>
 
