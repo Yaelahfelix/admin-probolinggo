@@ -61,7 +61,7 @@ export default function ResetPasswordPage() {
 
   const onSubmit = async (values: ResetPasswordFormData) => {
     try {
-      const session = await getCurrentSession();
+      // const session = await getCurrentSession();
       setErrorMsg("");
       const response = await fetch("/api/auth/reset-password", {
         method: "POST",
@@ -69,7 +69,7 @@ export default function ResetPasswordPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: session?.user?.id,
+          // id: session?.user?.id,
           oldPassword: values.oldPassword,
           newPassword: values.newPassword,
         }),
