@@ -69,7 +69,7 @@ const ReportPrintComponent = React.forwardRef<HTMLDivElement, DRDTableProps>(
                         display: "table-header-group",
                       }}
                     >
-                      <tr style={{ backgroundColor: "#f0f0f0" }}>
+                      <tr className="bg-slate-200 dark:bg-slate-700">
                         <th
                           style={{
                             border: "1px solid #000",
