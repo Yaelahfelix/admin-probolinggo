@@ -262,7 +262,12 @@ const ReportPrintComponent = React.forwardRef<HTMLDivElement, DRDTableProps>(
                               textAlign: "center",
                             }}
                           >
-                            {format(new Date(item.completed_at), "dd MMM yyyy")}
+                            {item.completed_at
+                              ? format(
+                                  new Date(item.completed_at),
+                                  "dd MMM yyyy"
+                                )
+                              : "-"}
                           </td>
                           <td
                             style={{
