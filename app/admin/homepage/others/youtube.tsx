@@ -61,7 +61,7 @@ const YoutubeUrlForm = ({ data }: { data: YoutubeURLType }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow">
+    <div className="bg-background rounded-lg shadow">
       <h3 className="pt-10 px-10 text-xl text-center font-bold">Youtube URL</h3>
       <Separator className="my-3" />
       <Form {...form}>

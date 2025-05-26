@@ -62,7 +62,7 @@ const WhatsappAdminForm = ({ data }: { data: WhatsappAdminType }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow">
+    <div className="bg-background rounded-lg shadow">
       <h3 className="pt-10 px-10 text-xl font-bold text-center">
         Kontak Whatsapp
       </h3>

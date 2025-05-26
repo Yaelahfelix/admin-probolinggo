@@ -46,7 +46,7 @@ const PartnerData = ({ partners }: Props) => {
       {partners.map((partner) => (
         <AlertDialog key={partner._id}>
           <AlertDialogTrigger>
-            <div className="bg-white p-5 shadow rounded-lg text-center hover:brightness-75 transition-all">
+            <div className="bg-background p-5 shadow rounded-lg text-center hover:brightness-75 transition-all">
               <Image
                 src={urlFor(partner.image).url()}
                 alt={partner.alt}

@@ -62,7 +62,7 @@ const DocumentHomepage = ({ data }: { data: DocumentHomepageType }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow">
+    <div className="bg-background rounded-lg shadow">
       <h3 className="pt-10 px-10 text-xl text-center font-bold">
         Dokumen Hasil Lab
       </h3>
